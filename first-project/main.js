@@ -9,5 +9,7 @@
 //ユーザがもう入力した数字を同じく入力すると教える機会を減らさない。
 let computerNum =0;
 function pickRandomNum(){
-computerNum=Math.random("정답",computerNum)
+computerNum=Math.floor（Math.random()*100）;//Math.random()0から1の間の数字をランダムで表しますMath.floorを使うことで自然数になります。
+console.log("정답",computerNum);
 }
+pickRandomNum();
