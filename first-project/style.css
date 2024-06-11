@@ -1,0 +1,22 @@
+body {
+margin: 0;
+color: aliceblue;
+background-image: url("");
+background-repeat: no-repeat;
+background-size: cover;
+background-color:black ;
+overflow-y: auto;
+}
+.container{
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.gamebox{
+margin: 5vh 30vw;
+padding: 5vh;
+    border: 2px solid lightgray;
+}
