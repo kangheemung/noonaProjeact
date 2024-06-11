@@ -15,19 +15,37 @@ let resetButton = document.getElementById("reset_button");
 let chances = 5;
 let gameOver = false;
 let chanceArea = document.getElementById("chansarea");
+let history = [];
+
 //console.log(playButton);
 playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
+userInput.addEventListener("focus", function () {
+  userInput.value = "";
+});
 function pickRandomNum() {
   computerNum = Math.floor(Math.random() * 100) + 1; //Math.random()0から1の間(1が含まれてない)の数字をランダムで表しますMath.floorを使うことで自然数になります。
   console.log("正解", computerNum);
 }
+
 function play() {
   //user番号持ってくる値を持ってきます
   let userValue = userInput.value;
+
+  if (userValue < 1 || userValue > 100) {
+    resultArea.textContent = "1と100の間の数字を入力して下さい。";
+    return; //終了
+  }
+  //同じ数字入力防止
+  if (history.includes(userValue)) {
+    resultArea.textContent = "すでに入力した数字です。";
+    return; //終了
+  }
+  if (chances < 1) {
+    chanceArea.textContent = "gameover";
+  }
   chances--;
   chanceArea.textContent = `残った機会${chances}回`;
-
   console.log("chance", chances);
 
   if (userValue < computerNum) {
@@ -38,11 +56,19 @@ function play() {
     resultArea.textContent = "down!!";
   } else {
     console.log("BingGo!!");
-    resultArea.textContent = "BingGo!!";
-    playButton.disabled = true;
+    resultArea.textContent = "正解!!";
+
+    gameOver = true;
   }
-  if (chances <= 0) {
-    alert("ゲームオーバー！ すべての機会を使いました。");
+  history.push(userValue);
+
+  console.log(history);
+
+  if (chances < 1) {
+    gameOver = true;
+  }
+
+  if (gameOver == true) {
     playButton.disabled = true;
   }
 }
@@ -50,11 +76,9 @@ function reset() {
   //userinputで内容綺麗に消す
   userInput.value = "";
   //新しい番号生成
-  chances = 5;
-  chanceArea.textContent = `残りの機会: ${chances} 回`;
   pickRandomNum();
-  resultArea.textContent = "結果の値がここに表示されます。";
-  playButton.disabled = false;
+
+resultArea.textContent = "再スタート!!";
 }
 
 pickRandomNum();
