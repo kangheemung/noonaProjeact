@@ -12,7 +12,7 @@ let playButton = document.getElementById("playbutton");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
 let resetButton = document.getElementById("reset_button");
-let chances = 5;
+let chances = 3;
 let gameOver = false;
 let chanceArea = document.getElementById("chansarea");
 let history = [];
@@ -68,14 +68,17 @@ function play() {
   }
 
   if (gameOver == true) {
-    playButton.disabled = true;
+   
   }
 }
 function reset() {
-  //userinputで内容綺麗に消す
   userInput.value = "";
-  //新しい番号生成
   pickRandomNum();
+  resultArea.textContent = "다시 시작!!";
+  chances = 3; // Reset the chances to 3
+  chanceArea.textContent = `남은 기회 ${chances}번`;
+  history = [];
+  gameOver = false;
 
 resultArea.textContent = "다시 스타트!!";
 }
