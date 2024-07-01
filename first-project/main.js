@@ -25,7 +25,7 @@ userInput.addEventListener("focus", function () {
 });
 function pickRandomNum() {
   computerNum = Math.floor(Math.random() * 100) + 1; //Math.random()0から1の間(1が含まれてない)の数字をランダムで表しますMath.floorを使うことで自然数になります。
-  console.log("正解", computerNum);
+//console.log("正解", computerNum);
 }
 
 function play() {
@@ -33,36 +33,35 @@ function play() {
   let userValue = userInput.value;
 
   if (userValue < 1 || userValue > 100) {
-    resultArea.textContent = "1と100の間の数字を入力して下さい。";
+    resultArea.textContent = "1과100의 사이의 숫자를 입력해주세요!";
     return; //終了
   }
   //同じ数字入力防止
   if (history.includes(userValue)) {
-    resultArea.textContent = "すでに入力した数字です。";
+    resultArea.textContent = "입력하신 숫자입니다.";
     return; //終了
   }
   if (chances < 1) {
     chanceArea.textContent = "gameover";
   }
   chances--;
-  chanceArea.textContent = `残った機会${chances}回`;
-  console.log("chance", chances);
+  chanceArea.textContent = `남은 기회${chances} 번`;
+//console.log("chance", chances);
 
   if (userValue < computerNum) {
-    console.log("UP!!");
+//console.log("UP!!");
     resultArea.textContent = "UP!!";
   } else if (userValue > computerNum) {
-    console.log("down!!");
+//console.log("down!!");
     resultArea.textContent = "down!!";
   } else {
-    console.log("BingGo!!");
-    resultArea.textContent = "正解!!";
-
+//console.log("BingGo!!");
+    resultArea.textContent = "정답!!";
     gameOver = true;
   }
   history.push(userValue);
 
-  console.log(history);
+//console.log(history);
 
   if (chances < 1) {
     gameOver = true;
@@ -78,7 +77,23 @@ function reset() {
   //新しい番号生成
   pickRandomNum();
 
-resultArea.textContent = "再スタート!!";
+resultArea.textContent = "다시 스타트!!";
 }
 
 pickRandomNum();
+document.addEventListener("DOMContentLoaded", function() {
+  const starsContainer = document.querySelector(".stars");
+
+  for (let i = 0; i < 50; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+
+      const randomX = Math.floor(Math.random() * window.innerWidth);
+      const randomY = Math.floor(Math.random() * window.innerHeight);
+
+      star.style.left = `${randomX}px`;
+      star.style.top = `${randomY}px`;
+
+      starsContainer.appendChild(star);
+  }
+});
