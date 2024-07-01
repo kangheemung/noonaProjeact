@@ -63,3 +63,22 @@ body {
         border-radius: 50%;
         animation: fireworks 1s ease-out;
       }
+  button {
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #333; /* Darken the button background on hover */
+        color: white; /* Change text color to white on hover */
+    }
+    @media (max-width: 768px) {
+        .button_area {
+            margin: 5%;
+        }
+    
+        .gamebox {
+            margin: 3vh 5vw;
+            padding: 3vh;
+        }
+    }

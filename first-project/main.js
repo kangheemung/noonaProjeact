@@ -25,7 +25,7 @@ userInput.addEventListener("focus", function () {
 });
 function pickRandomNum() {
   computerNum = Math.floor(Math.random() * 100) + 1; //Math.random()0から1の間(1が含まれてない)の数字をランダムで表しますMath.floorを使うことで自然数になります。
-//console.log("正解", computerNum);
+console.log("正解", computerNum);
 }
 
 function play() {
@@ -68,7 +68,7 @@ function play() {
   }
 
   if (gameOver == true) {
-   
+    playButton.disabled = true;
   }
 }
 function reset() {
@@ -80,7 +80,7 @@ function reset() {
   history = [];
   gameOver = false;
 
-resultArea.textContent = "다시 스타트!!";
+ resultArea.textContent = "다시 스타트!!";
 }
 
 pickRandomNum();
