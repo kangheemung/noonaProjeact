@@ -43,6 +43,8 @@ function play() {
   }
   if (chances < 1) {
     chanceArea.textContent = "gameover";
+    playButton.disabled = true;
+    return;
   }
   chances--;
   chanceArea.textContent = `남은 기회${chances} 번`;
@@ -63,9 +65,6 @@ function play() {
 
 //console.log(history);
 
-  if (chances < 1) {
-    gameOver = true;
-  }
 
   if (gameOver == true) {
     playButton.disabled = true;
@@ -79,11 +78,11 @@ function reset() {
   chanceArea.textContent = `남은 기회 ${chances}번`;
   history = [];
   gameOver = false;
-
  resultArea.textContent = "다시 스타트!!";
 }
 
 pickRandomNum();
+
 document.addEventListener("DOMContentLoaded", function() {
   const starsContainer = document.querySelector(".stars");
 
