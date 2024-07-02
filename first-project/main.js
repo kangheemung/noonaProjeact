@@ -78,7 +78,7 @@ function reset() {
   chanceArea.textContent = `남은 기회 ${chances}번`;
   history = [];
   gameOver = false;
- resultArea.textContent = "다시 스타트!!";
+  playButton.disabled = false;
 }
 
 pickRandomNum();
