@@ -16,16 +16,17 @@ let chances = 3;
 let gameOver = false;
 let chanceArea = document.getElementById("chansarea");
 let history = [];
-
+let correctAnswerDisplay;
 //console.log(playButton);
 playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("focus", function () {
-  userInput.value = "";
 });
+
 function pickRandomNum() {
-  computerNum = Math.floor(Math.random() * 100) + 1; //Math.random()0から1の間(1が含まれてない)の数字をランダムで表しますMath.floorを使うことで自然数になります。
-console.log("正解", computerNum);
+  computerNum = Math.floor(Math.random() * 100) + 1;
+  console.log("正解:", computerNum);
+  correctAnswerDisplay.textContent = `정답: ${computerNum}`; // Display correct answer in Korean
 }
 
 function play() {
@@ -74,14 +75,23 @@ function reset() {
   userInput.value = "";
   pickRandomNum();
   resultArea.textContent = "다시 시작!!";
-  chances = 3; // Reset the chances to 3
-  chanceArea.textContent = `남은 기회 ${chances}번`;
+  chances = 3;
+  chanceArea.textContent = `남은 기회 ${chances} 번`;
   history = [];
   gameOver = false;
   playButton.disabled = false;
+  correctAnswerDisplay.textContent = `정답: ${computerNum}`; // Update correct answer display
 }
 
-pickRandomNum();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  correctAnswerDisplay = document.getElementById("jongdap");
+  pickRandomNum(); // Move the call inside the DOMContentLoaded event listener
+});
+
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
   const starsContainer = document.querySelector(".stars");
