@@ -37,13 +37,13 @@ function play() {
 
   if (userValue < 1 || userValue > 100) {
     resultArea.textContent = "1과100의 사이의 숫자를 입력해주세요!";
-    userInput.value = ""; 
+    userInput.value = "";
     return; //終了
   }
   //同じ数字入力防止
   if (history.includes(userValue)) {
     resultArea.textContent = "입력하신 숫자입니다.";
-    userInput.value = ""; 
+    userInput.value = "";
     return; //終了
   }
 
@@ -52,7 +52,7 @@ function play() {
   chanceArea.textContent = `남은 기회${chances} 번`;
 //console.log("chance", chances);
  // 既存のコードからchanceArea.textContent = "gameover";を追加します
- if (chances < 1) {
+ if (chances < 0) {
   chanceArea.textContent = "게임 오버";
   document.getElementById('chansarea').textContent = "게임 오버";
   document.getElementById('chansarea').style.color = "red";
