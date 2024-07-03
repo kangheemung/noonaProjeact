@@ -52,7 +52,7 @@ function play() {
   chanceArea.textContent = `남은 기회${chances} 번`;
 //console.log("chance", chances);
  // 既存のコードからchanceArea.textContent = "gameover";を追加します
- if (chances < 0) {
+ if (chances <= 0) {
   chanceArea.textContent = "게임 오버";
   document.getElementById('chansarea').textContent = "게임 오버";
   document.getElementById('chansarea').style.color = "red";
