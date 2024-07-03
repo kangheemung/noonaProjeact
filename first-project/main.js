@@ -66,7 +66,8 @@ function play() {
     resultArea.textContent = "정답!!";
     chanceArea.textContent = "축하드립니다!";
     gameOver = true;
-     playButton.disabled = true; 
+     playButton.disabled = true;
+     userInput.value = "";  
  
   }
 
