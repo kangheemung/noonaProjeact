@@ -21,10 +21,11 @@ let correctAnswerDisplay;
 playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("keypress", function(event) {
- 
+  if (event.key === "Enter") {
     event.preventDefault();
-      playButton.click(); // Simulate a click on the playButton
-  
+    playButton.click(); 
+
+  }
 });
 function pickRandomNum() {
   computerNum = Math.floor(Math.random() * 100) + 1;
@@ -38,17 +39,17 @@ function play() {
     resultArea.textContent = "숫자를 입력해주세요!";
     return;
 }
-
-let userValue = parseInt(userInput.value);
+  let userValue = userInput.value;
 
   if (userValue < 1 || userValue > 100) {
     resultArea.textContent = "1과100의 사이의 숫자를 입력해주세요!";
+    userInput.value = ""; 
     return; //終了
   }
   //同じ数字入力防止
   if (history.includes(userValue)) {
     resultArea.textContent = "입력하신 숫자입니다.";
-  
+    userInput.value = ""; 
     return; //終了
   }
   if (chances < 1) {
