@@ -22,6 +22,8 @@ playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
+    event.preventDefault();
+    playButton.click(); 
       playButton.click(); // Simulate a click on the playButton
   }
 });
@@ -33,6 +35,9 @@ function pickRandomNum() {
 
 function play() {
   //user番号持ってくる値を持ってきます
+  if (gameOver) {
+    return; // ゲームが終了していたら何もせず関数を抜ける
+  }
   let userValue = userInput.value;
 
   if (userValue < 1 || userValue > 100) {
@@ -70,7 +75,12 @@ function play() {
      userInput.value = "";  
  
   }
-
+  if (chances == 0 && !gameOver) {
+    resultArea.textContent = "게임 오버!";
+    playButton.disabled = true;
+    userInput.value = "";  
+  }
+  
   history.push(userValue);
 
 //console.log(history);
