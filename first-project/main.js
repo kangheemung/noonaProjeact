@@ -18,7 +18,7 @@ let chanceArea = document.getElementById("chansarea");
 let history = [];
 let correctAnswerDisplay;
 //console.log(playButton);
-
+playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
@@ -96,6 +96,7 @@ if (chances < 1) {
 if (gameOver == true) {
   playButton.disabled = true;
 }
+userInput.value = "";
 }
 function reset() {
   userInput.value = "";
