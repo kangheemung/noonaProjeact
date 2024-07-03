@@ -46,20 +46,14 @@ function play() {
     userInput.value = "";
     return; //終了
   }
-
+ 
 
   chances--;
   chanceArea.textContent = `남은 기회${chances} 번`;
 //console.log("chance", chances);
  // 既存のコードからchanceArea.textContent = "gameover";を追加します
- if (chances <= 0) {
-  chanceArea.textContent = "게임 오버";
-  document.getElementById('chansarea').textContent = "게임 오버";
-  document.getElementById('chansarea').style.color = "red";
-  playButton.disabled = true; 
-  userInput.value = ""; // Clear the user input field
-  return;
-}
+
+
 
   if (userValue < computerNum) {
 //console.log("UP!!");
@@ -71,17 +65,22 @@ function play() {
 //console.log("BingGo!!");
     resultArea.textContent = "정답!!";
     chanceArea.textContent = "축하드립니다!";
+    gameOver = true;
      playButton.disabled = true; 
+ 
   }
+
   history.push(userValue);
 
 //console.log(history);
 
+if (chances < 1) {
+  gameOver = true;
+}
 
-  if (gameOver == true) {
-    playButton.disabled = true;
-  }
-  userInput.value = "";
+if (gameOver == true) {
+  playButton.disabled = true;
+}
 }
 function reset() {
   userInput.value = "";
