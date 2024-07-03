@@ -54,7 +54,8 @@ function play() {
   chanceArea.textContent = "게임 오버";
   document.getElementById('chansarea').textContent = "게임 오버";
   document.getElementById('chansarea').style.color = "red";
-  playButton.disabled = true; // Disable playButton when chances become 0
+  playButton.disabled = true; 
+  userInput.value = ""; // Clear the user input field
   return;
 }
 
