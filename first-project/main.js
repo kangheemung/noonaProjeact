@@ -20,9 +20,11 @@ let correctAnswerDisplay;
 //console.log(playButton);
 playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
-userInput.addEventListener("focus", function () {
+userInput.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+      playButton.click(); // Simulate a click on the playButton
+  }
 });
-
 function pickRandomNum() {
   computerNum = Math.floor(Math.random() * 100) + 1;
   console.log("正解:", computerNum);
@@ -42,14 +44,19 @@ function play() {
     resultArea.textContent = "입력하신 숫자입니다.";
     return; //終了
   }
-  if (chances < 1) {
-    chanceArea.textContent = "gameover";
-    playButton.disabled = true;
-    return;
-  }
+
+
   chances--;
   chanceArea.textContent = `남은 기회${chances} 번`;
 //console.log("chance", chances);
+ // 既存のコードからchanceArea.textContent = "gameover";を追加します
+ if (chances < 1) {
+  chanceArea.textContent = "게임 오버";
+  document.getElementById('chansarea').textContent = "게임 오버";
+  document.getElementById('chansarea').style.color = "red";
+  playButton.disabled = true; // Disable playButton when chances become 0
+  return;
+}
 
   if (userValue < computerNum) {
 //console.log("UP!!");
@@ -60,7 +67,7 @@ function play() {
   } else {
 //console.log("BingGo!!");
     resultArea.textContent = "정답!!";
-    gameOver = true;
+     playButton.disabled = true; 
   }
   history.push(userValue);
 
@@ -70,6 +77,7 @@ function play() {
   if (gameOver == true) {
     playButton.disabled = true;
   }
+  userInput.value = "";
 }
 function reset() {
   userInput.value = "";
