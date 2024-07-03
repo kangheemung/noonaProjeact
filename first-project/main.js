@@ -18,7 +18,10 @@ let chanceArea = document.getElementById("chansarea");
 let history = [];
 let correctAnswerDisplay;
 //console.log(playButton);
-playButton.addEventListener("click", play); //("click",function)
+playButton.addEventListener("click", function() {
+  userInput.value = ""; // インプットフィールドをリセットする
+  play(); // play 関数を呼び出す
+});
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
