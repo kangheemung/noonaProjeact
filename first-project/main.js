@@ -22,8 +22,9 @@ playButton.addEventListener("click", play); //("click",function)
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    event.preventDefault();
-    playButton.click(); 
+    event.preventDefault(); // デフォルトの動作をキャンセルしてインプットのリセットを行う
+    playButton.click();
+    userInput.value = ""
 
   }
 });
