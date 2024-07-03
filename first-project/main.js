@@ -68,6 +68,7 @@ function play() {
   } else {
 //console.log("BingGo!!");
     resultArea.textContent = "정답!!";
+    chanceArea.textContent = "축하드립니다!";
      playButton.disabled = true; 
   }
   history.push(userValue);
